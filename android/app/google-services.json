@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "1030699105290",
+    "project_id": "canard-pc-8e716",
+    "storage_bucket": "canard-pc-8e716.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030699105290:android:43f9606837830ccba833f3",
+        "android_client_info": {
+          "package_name": "com.example.canard_pc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030699105290-798ipsuofhmemnt8c1c014j6ssurj1ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmO-k1m0pyv3blUjfp9zUra7BAKTtD3Ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030699105290-798ipsuofhmemnt8c1c014j6ssurj1ar.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1030699105290-5nq3vpbf0t27k3365r882rsrvs6mnqll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.noah.canardPc"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030699105290:android:68f1cb48eaf961bfa833f3",
+        "android_client_info": {
+          "package_name": "com.noah.canard_pc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030699105290-798ipsuofhmemnt8c1c014j6ssurj1ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmO-k1m0pyv3blUjfp9zUra7BAKTtD3Ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030699105290-798ipsuofhmemnt8c1c014j6ssurj1ar.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1030699105290-5nq3vpbf0t27k3365r882rsrvs6mnqll.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.noah.canardPc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
