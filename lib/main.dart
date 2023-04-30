@@ -4,6 +4,7 @@ import 'color_theme.dart';
 import 'custom_color.dart';
 import 'shop_page.dart';
 import 'library_page.dart';
+import 'logout_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -66,7 +67,7 @@ class _MainState extends State<Main> {
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: const [ShopPage(), LibraryPage(), Text('Profil')],
+        children: const [ShopPage(), LibraryPage(), LogoutPage()],
       ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -80,20 +81,18 @@ class _MainState extends State<Main> {
           ),
         ),
       ),
-      bottomNavigationBar: StatefulBuilder(
-        builder: (BuildContext context, StateSetter setState) => BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _currentIndex,
-          onTap: (int index) => setState(() => _currentIndex = index),
-          items: const [
-            BottomNavigationBarItem(activeIcon: Icon(Icons.home), icon: Icon(Icons.home_outlined), label: 'Accueil'),
-            BottomNavigationBarItem(activeIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Bibliothèque'),
-            BottomNavigationBarItem(activeIcon: Icon(Icons.person), icon: Icon(Icons.person_outline), label: 'Profil'),
-          ],
-          selectedItemColor: Theme.of(context).colorScheme.onSurface,
-          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
-          backgroundColor: Theme.of(context).colorScheme.surface,
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        onTap: (int index) => setState(() => _currentIndex = index),
+        items: const [
+          BottomNavigationBarItem(activeIcon: Icon(Icons.home), icon: Icon(Icons.home_outlined), label: 'Accueil'),
+          BottomNavigationBarItem(activeIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Bibliothèque'),
+          BottomNavigationBarItem(activeIcon: Icon(Icons.person), icon: Icon(Icons.person_outline), label: 'Profil'),
+        ],
+        selectedItemColor: Theme.of(context).colorScheme.onSurface,
+        unselectedItemColor: Theme.of(context).colorScheme.onSurface,
+        backgroundColor: Theme.of(context).colorScheme.surface,
       ),
     );
   }

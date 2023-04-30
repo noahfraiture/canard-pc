@@ -27,22 +27,22 @@ class Category extends StatelessWidget {
               // Button "see more"
               Container(
                 // size of the button
-                height: 35,
-                width: 80,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  borderRadius: BorderRadius.circular(6),
-                ),
                 margin: const EdgeInsets.only(right: 10, bottom: 10),
-                child: TextButton(
-                  onPressed: () {
-                    // do something
-                  },
-                  child: Text(
-                    'Voir plus',
-                    style: getSecondaryTextStyle(context)
-                  ),
-                ),
+                child: ElevatedButton(
+                    onPressed: () {
+                      // do something
+                    },
+
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    child: Text(
+                      'Voir plus',
+                      style: smallButtonTextStyle(context),
+                    )),
               ),
             ],
           ),

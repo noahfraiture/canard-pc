@@ -9,10 +9,26 @@ TextStyle getPrimaryTextStyle(BuildContext context) {
   );
 }
 
-TextStyle getSecondaryTextStyle(BuildContext context) {
+TextStyle smallButtonTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: GoogleFonts.inter().fontFamily,
+    fontSize: 12.0,
+    color: Theme.of(context).colorScheme.onPrimary,
+  );
+}
+
+TextStyle mediumButtonTextStyle(BuildContext context) {
   return TextStyle(
     fontFamily: GoogleFonts.inter().fontFamily,
     fontSize: 14.0,
     color: Theme.of(context).colorScheme.onPrimary,
+  );
+}
+
+TextStyle getTertiaryTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: GoogleFonts.inter().fontFamily,
+    fontSize: 14.0,
+    color: Theme.of(context).colorScheme.onSurface,
   );
 }
