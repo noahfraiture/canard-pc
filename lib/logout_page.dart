@@ -11,7 +11,6 @@ class LogoutPage extends StatefulWidget {
 }
 
 class _LogoutPage extends State<LogoutPage> {
-  static const List<String> text = ["Tutoriel Liseuse", "Préférence d'affichage"];
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +23,6 @@ class _LogoutPage extends State<LogoutPage> {
               Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
               ),
-              for (int i = 0; i < text.length; i++)
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  padding: const EdgeInsets.all(7),
-                  margin: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                  child: Text(
-                    text[i],
-                    style: getTertiaryTextStyle(context),
-                  ),
-                ),
               // CGV
               GestureDetector(
                 onTap: openContact("https://www.canardpc.com/mentions-legales-et-cgu/"),
