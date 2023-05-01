@@ -32,3 +32,12 @@ TextStyle getTertiaryTextStyle(BuildContext context) {
     color: Theme.of(context).colorScheme.onSurface,
   );
 }
+
+TextStyle getLinkTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: GoogleFonts.inter().fontFamily,
+    fontSize: 14.0,
+    color: Theme.of(context).colorScheme.primary,
+    decoration: TextDecoration.underline,
+  );
+}
