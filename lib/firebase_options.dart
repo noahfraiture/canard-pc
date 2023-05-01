@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAmO-k1m0pyv3blUjfp9zUra7BAKTtD3Ms',
-    appId: '1:1030699105290:android:68f1cb48eaf961bfa833f3',
-    messagingSenderId: '1030699105290',
-    projectId: 'canard-pc-8e716',
-    storageBucket: 'canard-pc-8e716.appspot.com',
+    apiKey: 'AIzaSyC8j8CSa_FWO8rJv70DW0KBrA3wyncZLos',
+    appId: '1:984175461267:android:4901cdeaae3957009fde66',
+    messagingSenderId: '984175461267',
+    projectId: 'canard-pc-17daf',
+    storageBucket: 'canard-pc-17daf.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA0qiZp8gROMfJMQC-D9igV06X7nksFMQ8',
-    appId: '1:1030699105290:ios:bd4b5014ac955853a833f3',
-    messagingSenderId: '1030699105290',
-    projectId: 'canard-pc-8e716',
-    storageBucket: 'canard-pc-8e716.appspot.com',
-    iosClientId: '1030699105290-5nq3vpbf0t27k3365r882rsrvs6mnqll.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD0SKmVht2tSC1ZAFM0iIdmeI4nDRCKbhw',
+    appId: '1:984175461267:ios:8624d909a1df0d3c9fde66',
+    messagingSenderId: '984175461267',
+    projectId: 'canard-pc-17daf',
+    storageBucket: 'canard-pc-17daf.appspot.com',
+    iosClientId: '984175461267-os7t8u9lr5bkd1e2jkl8su4oe2nb1es7.apps.googleusercontent.com',
     iosBundleId: 'com.noah.canardPc',
   );
 }
