@@ -2,17 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'font.dart';
 import 'sign_in_page.dart';
+import 'font.dart';
 
-class LogoutPage extends StatefulWidget {
-  const LogoutPage({Key? key}) : super(key: key);
+class LoggedInPage extends StatefulWidget {
+  const LoggedInPage({Key? key}) : super(key: key);
 
   @override
-  _LogoutPage createState() => _LogoutPage();
+  _LoggedInPage createState() => _LoggedInPage();
 }
 
-class _LogoutPage extends State<LogoutPage> {
+class _LoggedInPage extends State<LoggedInPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
@@ -29,7 +29,7 @@ class _LogoutPage extends State<LogoutPage> {
               ),
               // CGV
               GestureDetector(
-                onTap: _openContact("https://www.canardpc.com/mentions-legales-et-cgu/"),
+                onTap: openContact("https://www.canardpc.com/mentions-legales-et-cgu/"),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.8,
                   padding: const EdgeInsets.all(7),
@@ -63,13 +63,13 @@ class _LogoutPage extends State<LogoutPage> {
                         title: Text("Contactez-nous", style: getTertiaryTextStyle(context)),
                         children: [
                           GestureDetector(
-                              onTap: _openContact("mailto:abonnement@canardpc.com"),
+                              onTap: openContact("mailto:abonnement@canardpc.com"),
                               child: Container(
                                   padding: const EdgeInsets.all(3),
                                   margin: const EdgeInsets.only(bottom: 3),
                                   child: Text("abonnement@canardpc.com", style: getLinkTextStyle(context)))),
                           GestureDetector(
-                            onTap: _openContact("tel:0184254080"),
+                            onTap: openContact("tel:0184254080"),
                             child: Container(
                                 padding: const EdgeInsets.all(3),
                                 child: Text("01 84 25 40 80", style: getLinkTextStyle(context))),
@@ -82,11 +82,9 @@ class _LogoutPage extends State<LogoutPage> {
               ),
               // Connexion button
               ElevatedButton(
+                // onPressed method push a new route to the sign in page
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignInPage()),
-                  );
+                  _signOut();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.primary,
@@ -105,10 +103,14 @@ class _LogoutPage extends State<LogoutPage> {
       ),
     );
   }
+
+  void _signOut() async {
+    await _auth.signOut();
+  }
 }
 
 // function that return a function that open a contact
-void Function() _openContact(String contact) {
+void Function() openContact(String contact) {
   return () => launchUrl(Uri.parse(contact)).then((value) {
         // Handle success
       }).catchError((error) {
