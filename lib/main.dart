@@ -78,11 +78,13 @@ class _MainState extends State<Main> {
     ShopPage(),
     LibraryPage(),
     LogoutPage(),
+    SignInPage(),
   ];
   final _bottomItems = const [
     BottomNavigationBarItem(activeIcon: Icon(Icons.home), icon: Icon(Icons.home_outlined), label: 'Accueil'),
     BottomNavigationBarItem(activeIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Bibliothèque'),
     BottomNavigationBarItem(activeIcon: Icon(Icons.person), icon: Icon(Icons.person_outline), label: 'Profil'),
+    BottomNavigationBarItem(activeIcon: Icon(Icons.login), icon: Icon(Icons.login_outlined), label: 'Connexion'),
   ];
 
   final _loggedInPage = const LoggedInPage();
@@ -91,11 +93,21 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _currentIndex != 2 ? IndexedStack(
-        index: _currentIndex,
-        children: _children,
-      ) : FirebaseAuth.instance.currentUser != null ? _loggedInPage : _logoutPage,
-
+      body: _currentIndex != 2
+          ? IndexedStack(
+              index: _currentIndex,
+              children: _children,
+            )
+          : StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return _loggedInPage;
+          } else {
+            return _logoutPage;
+          }
+        },
+      ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: SizedBox(

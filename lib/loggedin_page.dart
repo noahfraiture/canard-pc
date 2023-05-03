@@ -93,7 +93,7 @@ class _LoggedInPage extends State<LoggedInPage> {
                   ),
                 ),
                 child: Text(
-                  'Connexion',
+                  'Déconnexion',
                   style: mediumButtonTextStyle(context),
                 ),
               ),
