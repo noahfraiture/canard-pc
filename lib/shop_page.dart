@@ -1,54 +1,93 @@
 import 'package:flutter/material.dart';
-import 'category.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'filter.dart';
+import 'font.dart';
 import 'magazine.dart';
 
 class ShopPage extends StatelessWidget {
-  const ShopPage({Key? key}) : super(key: key);
+  const ShopPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return ListView
-      (
-      padding: const EdgeInsets.only(top: 10),
-      children: [
-        Category(title: "Canard PC", children: const [
-          Magazine(image: "assets/images/mai.jpg", id: "mai"),
-          Magazine(image: "assets/images/avril.jpg", id: "avril"),
-          Magazine(image: "assets/images/mars.jpg", id: "mars"),
-          Magazine(image: "assets/images/fevrier.jpg", id: "fevrier"),
-          Magazine(image: "assets/images/janvier.jpg", id: "janvier"),
-          Magazine(image: "assets/images/decembre.jpg", id: "decembre"),
-          Magazine(image: "assets/images/novembre.jpg", id: "novembre"),
-        ]),
-        Category(
-          title: "Hardware",
-          children: const [
-            Magazine(image: "assets/images/hardware-1.jpg", id: "hard1"),
-            Magazine(image: "assets/images/hardware-2.jpg", id: "hard2"),
-            Magazine(image: "assets/images/hardware-3.jpg", id: "hard3"),
-            Magazine(image: "assets/images/hardware-4.jpg", id: "hard4"),
-            Magazine(image: "assets/images/hardware-5.jpg", id: "hard5"),
-          ],
-        ),
-        Category(
-          title: "Hors-série",
-          children: const [
-            Magazine(image: "assets/images/special-1.jpg", id: "spec1"),
-            Magazine(image: "assets/images/special-2.jpg", id: "spec2"),
-          ],
-        ),
-        Category(
-          title: "Hardware spécial",
-          children: const [
-            Magazine(
-                image: "assets/images/hardware-special-1.jpg",
-                id: "hard-spec1"),
-            Magazine(
-                image: "assets/images/hardware-special-2.jpg",
-                id: "hard-spec2"),
-          ],
-        ),
-      ],
-    );
+    return ListView(padding: const EdgeInsets.only(top: 10), children: const [
+      ShopCategory(title: "Canard PC", children: Magazines.canardPC),
+      ShopCategory(title: "Hardware", children: Magazines.hardware),
+      ShopCategory(title: "Hors-série", children: Magazines.hs),
+      ShopCategory(title: "Hardware spécial", children: Magazines.hsHardware)
+    ]);
   }
 }
 
+class ShopCategory extends StatelessWidget {
+  final String title;
+  final List<Magazine> children;
+
+  const ShopCategory({super.key, required this.title, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Row title with a button on the right
+          Container(
+            margin: const EdgeInsets.only(left: 15, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: getPrimaryTextStyle(context),
+                ),
+                // Button "see more"
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // do something
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    child: Text(
+                      'Voir tout',
+                      style: smallButtonTextStyle(context),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Row with a horizontal scrollable list of items
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: Row(
+                  children: [
+                    for (Magazine mag in children)
+                      Container(
+                        padding: const EdgeInsets.only(left: 15),
+                        // we don't add padding to the right, but we'll add after the last item
+                        child: GestureDetector(
+                          onTap: () => Fluttertoast.showToast(msg: mag.id),
+                          child: Image.asset(
+                            mag.image,
+                            height: 155,
+                            width: 116,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              )),
+        ],
+      ),
+    );
+  }
+}

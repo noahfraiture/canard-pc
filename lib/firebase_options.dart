@@ -17,16 +17,16 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -49,21 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC8j8CSa_FWO8rJv70DW0KBrA3wyncZLos',
-    appId: '1:984175461267:android:4901cdeaae3957009fde66',
-    messagingSenderId: '984175461267',
-    projectId: 'canard-pc-17daf',
-    storageBucket: 'canard-pc-17daf.appspot.com',
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyANQ46c8_uTp20keGaps6Ukq4m8LvmG-RA',
+    appId: '1:330574811659:web:645f684bcc2eecdb0e2d0e',
+    messagingSenderId: '330574811659',
+    projectId: 'canardpc-ac97c',
+    authDomain: 'canardpc-ac97c.firebaseapp.com',
+    storageBucket: 'canardpc-ac97c.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD0SKmVht2tSC1ZAFM0iIdmeI4nDRCKbhw',
-    appId: '1:984175461267:ios:8624d909a1df0d3c9fde66',
-    messagingSenderId: '984175461267',
-    projectId: 'canard-pc-17daf',
-    storageBucket: 'canard-pc-17daf.appspot.com',
-    iosClientId: '984175461267-os7t8u9lr5bkd1e2jkl8su4oe2nb1es7.apps.googleusercontent.com',
-    iosBundleId: 'com.noah.canardPc',
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCiN5nAarjPI_D65xU8SvkZW3b4cSPPq0A',
+    appId: '1:330574811659:android:e7abe5b4d50b493e0e2d0e',
+    messagingSenderId: '330574811659',
+    projectId: 'canardpc-ac97c',
+    storageBucket: 'canardpc-ac97c.appspot.com',
   );
 }

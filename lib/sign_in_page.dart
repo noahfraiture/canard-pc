@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'main.dart';
 
 class SignInPage extends StatefulWidget {
-  const SignInPage({Key? key}) : super(key: key);
+  const SignInPage({super.key});
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -64,32 +64,26 @@ class _SignInPageState extends State<SignInPage> {
           ),
           // Register button
           ElevatedButton(
-            onPressed: _signIn,
+            onPressed: () {
+              // TODO : degueulasse, need futurebuilder and so
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext context) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  });
+              _auth.signInWithEmailAndPassword(
+                email: _emailController.text.trim(),
+                password: _passwordController.text.trim(),
+              );
+              Navigator.pop(context);
+            },
             child: const Text('Se connecter'),
           ),
         ],
       ),
     );
-  }
-
-  void _signIn() async {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-    );
-    try {
-      await _auth.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-    } on FirebaseAuthException catch (e) {
-      print(e);
-    }
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

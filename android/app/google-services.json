@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "984175461267",
-    "project_id": "canard-pc-17daf",
-    "storage_bucket": "canard-pc-17daf.appspot.com"
+    "project_number": "330574811659",
+    "project_id": "canardpc-ac97c",
+    "storage_bucket": "canardpc-ac97c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:984175461267:android:4901cdeaae3957009fde66",
+        "mobilesdk_app_id": "1:330574811659:android:e7abe5b4d50b493e0e2d0e",
         "android_client_info": {
-          "package_name": "com.noah.canard_pc"
+          "package_name": "com.noah.canardpc"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "984175461267-k911tq9eo860mb6crrp9jk7hoettot2k.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC8j8CSa_FWO8rJv70DW0KBrA3wyncZLos"
+          "current_key": "AIzaSyCiN5nAarjPI_D65xU8SvkZW3b4cSPPq0A"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "984175461267-k911tq9eo860mb6crrp9jk7hoettot2k.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

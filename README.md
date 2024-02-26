@@ -1,6 +1,6 @@
-# canard_pc
+# canardpc
 
-Remaking app
+A new Flutter project.
 
 ## Getting Started
 
