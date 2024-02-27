@@ -1,5 +1,5 @@
 import 'package:canardpc/firebase_options.dart';
-import 'package:canardpc/magazine.dart';
+import 'package:canardpc/color_theme.dart';
 import 'package:canardpc/profile_in_page.dart';
 import 'package:canardpc/profile_out_page.dart';
 import 'package:canardpc/shop_page.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: lightColorScheme,
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -56,6 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
     const LibraryPage(),
     FirebaseAuth.instance.currentUser == null ? const ProfileOutPage() : const ProfileInPage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      setState(() {
+        _pages[2] = user == null ? const ProfileOutPage() : const ProfileInPage();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
