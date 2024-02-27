@@ -11,7 +11,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _auth = FirebaseAuth.instance;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -25,72 +24,107 @@ class _RegisterPageState extends State<RegisterPage> {
   bool isLoading = false;
 
   Future register() async {
-    try {
-      setState(() {
-        isLoading = true;
-      });
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      // TODO : does this login the user ?
-      setState(() {
-        isLoading = false;
-      });
-    } catch (e) {
-      isLoading = false;
-      Fluttertoast.showToast(msg: e.toString());
-    }
+    setState(() {
+      isLoading = true;
+    });
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        )
+        .then((value) => {
+              // TODO : does this login the user ?
+              setState(() {
+                isLoading = false;
+                Navigator.pop(context); // Navigate back to previous page
+              })
+            })
+        .catchError((e) => {
+              setState(() {
+                isLoading = false;
+                Fluttertoast.showToast(msg: e.toString());
+              })
+            });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Email field
-          const Text(
-            'Email',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Title
+              const Text(
+                'Create Account',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20.0),
+
+              // Email field
+              const Text(
+                'Email',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              const SizedBox(height: 5.0),
+              TextField(
+                controller: _emailController,
+                cursorColor: Colors.black,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  hintText: 'Enter your email',
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+
+              // Password field
+              const Text(
+                'Password',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              const SizedBox(height: 5.0),
+              TextField(
+                controller: _passwordController,
+                cursorColor: Colors.black,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Enter your password',
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+
+              // Register button
+              ElevatedButton(
+                onPressed: register,
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+                child: isLoading ? const CircularProgressIndicator() : const Text('Register'),
+              ),
+            ],
           ),
-          TextField(
-            controller: _emailController,
-            cursorColor: Colors.black,
-            textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre email',
-            ),
-          ),
-          // Password field
-          const Text(
-            'Mot de passe',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          TextField(
-            controller: _passwordController,
-            cursorColor: Colors.black,
-            obscureText: true,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre mot de passe',
-            ),
-          ),
-          // Register button
-          ElevatedButton(
-            onPressed: () {
-              register();
-              // Pop and tell to replace the route with profileIn instead of profileOut
-              Navigator.pop(context);
-            },
-            child: isLoading ? const CircularProgressIndicator() : const Text('Register'),
-          ),
-        ],
+        ),
       ),
     );
   }
