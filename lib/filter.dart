@@ -24,10 +24,11 @@ class Filter {
   }
 
   bool isSelected(Category category) {
-    return _isFilter[category] ?? false;
+    _isFilter[category] ??= false;
+    return _isFilter[category]!;
   }
 
   void toggle(Category category) {
-    _isFilter[category] = (_isFilter[category] ?? true);
+    _isFilter[category] = !(_isFilter[category] ?? false);
   }
 }

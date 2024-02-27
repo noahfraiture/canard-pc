@@ -1,3 +1,5 @@
+import 'filter.dart';
+
 enum Category {
   canardPC,
   hardware,
@@ -66,8 +68,9 @@ class Magazines {
     Magazine(image: "assets/images/avril.jpg", id: "SP avril", category: Category.hsHardware),
   ];
 
-  List<Magazine> get(Map<Category, bool> filter) {
+  List<Magazine> get() {
     List<Magazine> magazines = canardPC + hardware + hs + hsHardware;
-    return magazines.where((element) => filter[element.category] ?? true).toList();
+    if (Filter().allSelected()) return magazines;
+    return magazines.where((element) => Filter().isSelected(element.category)).toList();
   }
 }

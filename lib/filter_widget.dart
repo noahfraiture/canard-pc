@@ -17,36 +17,29 @@ class _FilterButtonsState extends State<FilterButtons> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
+        scrollDirection: Axis.horizontal,
+        child: Row(children: [
           for (Category category in Category.values)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Filter().isSelected(category)
-                      ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.surface,
-                ),
-                onPressed: () {
-                  setState(
-                    () => Filter().toggle(category),
-                  );
-                  widget.notifyParent();
-                },
-                child: Text(
-                  Magazine.categoryToName[category] ?? 'error',
-                  style: TextStyle(
-                    color: Filter().isSelected(category)
-                        ? Theme.of(context).colorScheme.onPrimary
-                        : Theme.of(context).colorScheme.onSurface,
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Filter().isSelected(category)
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.surface,
+                    ),
+                    onPressed: () {
+                      setState(
+                        () => Filter().toggle(category),
+                      );
+                      widget.notifyParent();
+                    },
+                    child: Text(Magazine.categoryToName[category] ?? 'error',
+                        style: TextStyle(
+                          color: Filter().isSelected(category)
+                              ? Theme.of(context).colorScheme.onPrimary
+                              : Theme.of(context).colorScheme.onSurface,
+                        ))))
+        ]));
   }
 }

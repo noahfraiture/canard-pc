@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
-  // form with an email and a password field to register
+class _RegisterPageState extends State<RegisterPage> {
   final _auth = FirebaseAuth.instance;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -25,15 +24,16 @@ class _SignInPageState extends State<SignInPage> {
 
   bool isLoading = false;
 
-  Future signIn() async {
+  Future register() async {
     try {
       setState(() {
         isLoading = true;
       });
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+      // TODO : does this login the user ?
       setState(() {
         isLoading = false;
       });
@@ -84,12 +84,11 @@ class _SignInPageState extends State<SignInPage> {
           // Register button
           ElevatedButton(
             onPressed: () {
-              signIn();
+              register();
               // Pop and tell to replace the route with profileIn instead of profileOut
               Navigator.pop(context);
-              // TODO notify main to replace page
             },
-            child: isLoading ? const CircularProgressIndicator() : const Text('Sign in'),
+            child: isLoading ? const CircularProgressIndicator() : const Text('Register'),
           ),
         ],
       ),

@@ -12,11 +12,12 @@ class LibraryPage extends StatefulWidget {
 }
 
 class _LibraryPage extends State<LibraryPage> {
-  late List<Magazine> magazines;
+  // depend on Filter directly called in the Magazines class
+  List<Magazine> magazines = Magazines().get();
   void _onFilterSelected() {
     // update and rebuild the state
     setState(() {});
-    magazines = Magazines().get(Filter().getMap());
+    magazines = Magazines().get();
   }
 
   @override

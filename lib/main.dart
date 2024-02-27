@@ -1,3 +1,7 @@
+import 'package:canardpc/firebase_options.dart';
+import 'package:canardpc/magazine.dart';
+import 'package:canardpc/profile_in_page.dart';
+import 'package:canardpc/profile_out_page.dart';
 import 'package:canardpc/shop_page.dart';
 import 'package:canardpc/library_page.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -45,13 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
         activeIcon: Icon(Icons.bookmark), icon: Icon(Icons.bookmark_border), label: 'Bibliothèque'),
     BottomNavigationBarItem(
         activeIcon: Icon(Icons.person), icon: Icon(Icons.person_outline), label: 'Profil'),
-    BottomNavigationBarItem(
-        activeIcon: Icon(Icons.login), icon: Icon(Icons.login_outlined), label: 'Connexion'),
   ];
 
-  final _pages = const [
-    ShopPage(),
-    LibraryPage(),
+  final _pages = [
+    const ShopPage(),
+    const LibraryPage(),
+    FirebaseAuth.instance.currentUser == null ? const ProfileOutPage() : const ProfileInPage(),
   ];
 
   @override

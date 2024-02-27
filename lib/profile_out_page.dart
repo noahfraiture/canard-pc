@@ -1,4 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:canardpc/register_page.dart';
+import 'package:canardpc/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,11 +9,10 @@ class ProfileOutPage extends StatefulWidget {
   const ProfileOutPage({super.key});
 
   @override
-  _ProfileOutPageState createState() => _ProfileOutPageState();
+  ProfileOutPageState createState() => ProfileOutPageState();
 }
 
-// TODO : here's the global page that change if the user is logged in or logged out
-class _ProfileOutPageState extends State<ProfileOutPage> {
+class ProfileOutPageState extends State<ProfileOutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +95,24 @@ class _ProfileOutPageState extends State<ProfileOutPage> {
                 ),
                 child: Text(
                   'Connexion',
+                  style: mediumButtonTextStyle(context),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RegisterPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                child: Text(
+                  'Register',
                   style: mediumButtonTextStyle(context),
                 ),
               ),
