@@ -1,8 +1,8 @@
-import 'package:canardpc/profile_out_page.dart';
+import 'package:canardpc/pages/profile_out_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'font.dart';
+import '../font.dart';
 
 class ProfileInPage extends StatefulWidget {
   const ProfileInPage({super.key});

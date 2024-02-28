@@ -1,12 +1,15 @@
 import 'package:canardpc/firebase_options.dart';
 import 'package:canardpc/color_theme.dart';
-import 'package:canardpc/profile_in_page.dart';
-import 'package:canardpc/profile_out_page.dart';
-import 'package:canardpc/shop_page.dart';
-import 'package:canardpc/library_page.dart';
+import 'package:canardpc/pages/profile_in_page.dart';
+import 'package:canardpc/pages/profile_out_page.dart';
+import 'package:canardpc/pages/shop_page.dart';
+import 'package:canardpc/pages/library_page.dart';
+import 'package:canardpc/widget/canard_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'classes/magazine.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +44,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  late User user;
   final _bottomItems = const [
     BottomNavigationBarItem(
         activeIcon: Icon(Icons.home), icon: Icon(Icons.home_outlined), label: 'Accueil'),
@@ -70,18 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: SizedBox(
-          height: 40,
-          child: Center(
-            child: Image.asset(
-              'assets/images/canard_logo.png', // TODO : add image
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-      ),
+      appBar: canardBar(context),
       body: IndexedStack(
         index: _currentIndex,
         children: _pages,

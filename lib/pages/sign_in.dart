@@ -1,16 +1,17 @@
-import 'package:canardpc/profile_in_page.dart';
+import 'package:canardpc/pages/profile_in.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _SignInPageState extends State<SignInPage> {
+  // form with an email and a password field to register
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -23,22 +24,20 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool isLoading = false;
 
-  Future register() async {
+  // TODO : very similar to register, could be merged or kept separate for clarity
+  Future signIn() async {
     setState(() {
       isLoading = true;
     });
     await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
+        .signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         )
-        .then((value) => {
-              // TODO : does this login the user ?
-              setState(() {
-                isLoading = false;
-                Navigator.pop(context); // Navigate back to previous page
-              })
-            })
+        .then((value) => setState(() {
+              isLoading = false;
+              Navigator.pop(context);
+            }))
         .catchError((e) => {
               setState(() {
                 isLoading = false;
@@ -58,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               // Title
               const Text(
-                'Create Account',
+                'Welcome Back',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -110,9 +109,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 20.0),
 
-              // Register button
+              // Sign in button
               ElevatedButton(
-                onPressed: register,
+                onPressed: signIn,
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -120,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                child: isLoading ? const CircularProgressIndicator() : const Text('Register'),
+                child: isLoading ? const CircularProgressIndicator() : const Text('Sign In'),
               ),
             ],
           ),

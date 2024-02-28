@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'filter.dart';
-import 'font.dart';
-import 'magazine.dart';
+import '../classes/filter.dart';
+import '../font.dart';
+import '../classes/magazine.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(padding: const EdgeInsets.only(top: 10), children: const [
+    return ListView(padding: const EdgeInsets.only(top: 10), children: [
       ShopCategory(title: "Canard PC", children: Magazines.canardPC),
       ShopCategory(title: "Hardware", children: Magazines.hardware),
       ShopCategory(title: "Hors-série", children: Magazines.hs),
