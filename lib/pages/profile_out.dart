@@ -1,5 +1,5 @@
-import 'package:canardpc/pages/register_page.dart';
-import 'package:canardpc/pages/sign_in_page.dart';
+import 'package:canardpc/pages/register.dart';
+import 'package:canardpc/pages/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
