@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:canardpc/library/owned_page.dart';
-import 'package:canardpc/library/detail_page.dart';
+import 'package:canardpc/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:canardpc/magazine.dart';
 
