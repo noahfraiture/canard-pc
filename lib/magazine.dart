@@ -1,4 +1,4 @@
-import 'filter.dart';
+import 'library/filter.dart';
 
 enum Category {
   canardPC,
@@ -186,6 +186,19 @@ class Magazines {
         downloaded: false,
         bought: true),
   ];
+
+  List<Magazine> getByCategory(Category category) {
+    switch (category) {
+      case Category.canardPC:
+        return canardPC;
+      case Category.hardware:
+        return hardware;
+      case Category.hsPC:
+        return hs;
+      case Category.hsHardware:
+        return hsHardware;
+    }
+  }
 
   List<Magazine> get() {
     List<Magazine> magazines = canardPC + hardware + hs + hsHardware;

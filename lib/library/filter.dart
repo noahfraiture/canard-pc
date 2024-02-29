@@ -1,4 +1,4 @@
-import 'magazine.dart';
+import '../magazine.dart';
 
 class Filter {
   static final _singleton = Filter._internal();

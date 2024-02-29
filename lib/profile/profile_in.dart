@@ -1,11 +1,16 @@
-import 'package:canardpc/pages/profile_out.dart';
+import 'package:canardpc/profile/profile_out.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../font.dart';
+import 'package:canardpc/resources/font.dart';
 
-class ProfileInPage extends StatefulWidget {
+import '../main_pages.dart';
+
+class ProfileInPage extends StatefulWidget implements MainPages {
   const ProfileInPage({super.key});
+
+  @override
+  void reload() {}
 
   @override
   ProfileInPageState createState() => ProfileInPageState();

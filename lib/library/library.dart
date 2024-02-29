@@ -1,45 +1,64 @@
 import 'dart:developer';
-import 'package:canardpc/widget/downloads.dart';
-import 'package:canardpc/widget/magazine_detail.dart';
-import 'package:flutter/material.dart';
-import 'package:canardpc/classes/magazine.dart';
 
-class LibraryPage extends StatefulWidget {
-  const LibraryPage({super.key});
+import 'package:canardpc/library/owned_page.dart';
+import 'package:canardpc/library/detail_page.dart';
+import 'package:flutter/material.dart';
+import 'package:canardpc/magazine.dart';
+
+import '../main_pages.dart';
+
+class LibraryPage extends StatefulWidget implements MainPages {
+  LibraryPage({super.key});
+
+  late MainPages? delegate;
+
+  @override
+  void reload() {
+    delegate?.reload();
+  }
 
   @override
   State<LibraryPage> createState() => _LibraryPage();
 }
 
-class _LibraryPage extends State<LibraryPage> {
+class _LibraryPage extends State<LibraryPage> implements MainPages {
   // Depend on Filter directly called in the Magazines class
   Magazine? currentMagazine;
 
   @override
   void initState() {
+    widget.delegate = this;
     currentMagazine = null;
     super.initState();
   }
 
   @override
+  void reload() {
+    setState(() {
+      currentMagazine = null;
+    });
+  }
+
+  @override
+  void dispose() {
+    log("dispose library");
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Add padding to the body
-      // TODO : move in different files / classes / widgets
       body: currentMagazine == null
-          ? Downloads(onClick: (magazine) {
+          ? Owned(onClick: (magazine) {
               setState(() {
                 currentMagazine = magazine;
               });
             })
-          : MagazineDetail(
+          : Detail(
               magazine: currentMagazine!,
               onBack: () {
-                log("Back1");
                 setState(() {
-                  log("Back2");
                   currentMagazine = null;
-                  log("Back3");
                 });
               }),
     );

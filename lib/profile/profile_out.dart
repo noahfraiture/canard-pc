@@ -1,18 +1,31 @@
-import 'package:canardpc/pages/register.dart';
-import 'package:canardpc/pages/sign_in.dart';
+import 'dart:developer';
+
+import 'package:canardpc/profile/register.dart';
+import 'package:canardpc/profile/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../font.dart';
+import 'package:canardpc/resources/font.dart';
 
-class ProfileOutPage extends StatefulWidget {
+import '../main_pages.dart';
+
+class ProfileOutPage extends StatefulWidget implements MainPages {
   const ProfileOutPage({super.key});
+
+  @override
+  void reload() {}
 
   @override
   ProfileOutPageState createState() => ProfileOutPageState();
 }
 
 class ProfileOutPageState extends State<ProfileOutPage> {
+  @override
+  void dispose() {
+    log("ProfileOutPage disposed");
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,20 +1,17 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import '../magazine.dart';
 
-import '../classes/magazine.dart';
-
-class MagazineDetail extends StatefulWidget {
+class Detail extends StatefulWidget {
   final Magazine magazine;
   final VoidCallback onBack;
 
-  const MagazineDetail({super.key, required this.magazine, required this.onBack});
+  const Detail({super.key, required this.magazine, required this.onBack});
 
   @override
-  MagazineDetailState createState() => MagazineDetailState();
+  DetailState createState() => DetailState();
 }
 
-class MagazineDetailState extends State<MagazineDetail> {
+class DetailState extends State<Detail> {
   late Magazine magazine;
 
   @override
@@ -27,7 +24,7 @@ class MagazineDetailState extends State<MagazineDetail> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (v) => {log("1"), widget.onBack(), log("2")},
+      onPopInvoked: (v) => widget.onBack(),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
