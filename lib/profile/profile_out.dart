@@ -9,11 +9,8 @@ import 'package:canardpc/resources/font.dart';
 
 import '../main_pages.dart';
 
-class ProfileOutPage extends StatefulWidget implements MainPages {
+class ProfileOutPage extends StatefulWidget {
   const ProfileOutPage({super.key});
-
-  @override
-  void reload() {}
 
   @override
   ProfileOutPageState createState() => ProfileOutPageState();

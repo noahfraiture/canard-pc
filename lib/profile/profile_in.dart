@@ -6,11 +6,8 @@ import 'package:canardpc/resources/font.dart';
 
 import '../main_pages.dart';
 
-class ProfileInPage extends StatefulWidget implements MainPages {
+class ProfileInPage extends StatefulWidget {
   const ProfileInPage({super.key});
-
-  @override
-  void reload() {}
 
   @override
   ProfileInPageState createState() => ProfileInPageState();

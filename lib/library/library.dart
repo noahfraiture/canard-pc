@@ -7,36 +7,21 @@ import 'package:canardpc/magazine.dart';
 
 import '../main_pages.dart';
 
-class LibraryPage extends StatefulWidget implements MainPages {
-  LibraryPage({super.key});
-
-  late MainPages? delegate;
-
-  @override
-  void reload() {
-    delegate?.reload();
-  }
+class LibraryPage extends StatefulWidget {
+  const LibraryPage({super.key});
 
   @override
   State<LibraryPage> createState() => _LibraryPage();
 }
 
-class _LibraryPage extends State<LibraryPage> implements MainPages {
+class _LibraryPage extends State<LibraryPage> {
   // Depend on Filter directly called in the Magazines class
   Magazine? currentMagazine;
 
   @override
   void initState() {
-    widget.delegate = this;
     currentMagazine = null;
     super.initState();
-  }
-
-  @override
-  void reload() {
-    setState(() {
-      currentMagazine = null;
-    });
   }
 
   @override

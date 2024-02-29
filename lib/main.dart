@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:canardpc/firebase_options.dart';
 import 'package:canardpc/resources/color_theme.dart';
 import 'package:canardpc/profile/profile_in.dart';
@@ -43,7 +46,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  MainPages _page = Home();
   final _bottomItems = const [
     BottomNavigationBarItem(
         activeIcon: Icon(Icons.home), icon: Icon(Icons.home_outlined), label: 'Home'),
@@ -53,12 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
         activeIcon: Icon(Icons.person), icon: Icon(Icons.person_outline), label: 'Profile'),
   ];
 
+  final _pages = [
+    const Home(),
+    const LibraryPage(),
+    FirebaseAuth.instance.currentUser == null ? const ProfileOutPage() : const ProfileInPage(),
+  ];
+
   @override
   void initState() {
-    Home();
-    LibraryPage();
-    const ProfileOutPage();
-    const ProfileInPage();
     super.initState();
   }
 
@@ -66,24 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: canardBar(context),
-      body: _page as Widget,
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: _bottomItems,
         currentIndex: _currentIndex,
-        onTap: (int index) => setState(() {
-          _currentIndex = index;
-          switch (_currentIndex) {
-            case 0:
-              _page = Home();
-            case 1:
-              _page = LibraryPage();
-            case 2:
-              FirebaseAuth.instance.currentUser == null
-                  ? const ProfileOutPage()
-                  : const ProfileInPage();
-          }
-          _page.reload();
-        }),
+        onTap: (int index) => setState(() => _currentIndex = index),
         selectedItemColor: Theme.of(context).colorScheme.onSurface,
         unselectedItemColor: Theme.of(context).colorScheme.onSurface,
         backgroundColor: Theme.of(context).colorScheme.surface,
