@@ -1,7 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:canardpc/firebase_options.dart';
 import 'package:canardpc/resources/color_theme.dart';
 import 'package:canardpc/profile/profile_in.dart';
@@ -12,9 +9,6 @@ import 'package:canardpc/widget/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'magazine.dart';
-import 'main_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
