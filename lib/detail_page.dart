@@ -22,7 +22,7 @@ class DetailState extends State<Detail> {
     super.initState();
   }
 
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController(initialScrollOffset: 0.0);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,11 @@ class DetailState extends State<Detail> {
               padding: const EdgeInsets.all(10),
               child: MagazineGrid(
                   magazines: Magazines().getByCategory(magazine.category),
-                  onClick: (m) => setState(() => magazine = m)))
+                  onClick: (m) => setState(() {
+                        magazine = m;
+                        _scrollController.animateTo(0,
+                            duration: const Duration(milliseconds: 500), curve: Curves.ease);
+                      })))
         ]));
   }
 }

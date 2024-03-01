@@ -8,7 +8,9 @@ import 'package:canardpc/magazine.dart';
 import '../main_pages.dart';
 
 class LibraryPage extends StatefulWidget {
-  const LibraryPage({super.key});
+  const LibraryPage({super.key, required this.stream});
+
+  final Stream<void> stream;
 
   @override
   State<LibraryPage> createState() => _LibraryPage();
@@ -20,6 +22,12 @@ class _LibraryPage extends State<LibraryPage> {
 
   @override
   void initState() {
+    widget.stream.listen((event) {
+      // index in the main list to avoid rebuilding if we aren't on this page.
+      setState(() {
+        currentMagazine = null;
+      });
+    });
     currentMagazine = null;
     super.initState();
   }

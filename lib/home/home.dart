@@ -6,7 +6,9 @@ import '../detail_page.dart';
 import 'discover.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({super.key, required this.stream});
+
+  final Stream<void> stream;
 
   @override
   State<Home> createState() => _HomeState();
@@ -18,6 +20,12 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    widget.stream.listen((event) {
+      setState(() {
+        currentMagazine = null;
+        currentCategory = null;
+      });
+    });
     currentCategory = null;
     currentMagazine = null;
     super.initState();
