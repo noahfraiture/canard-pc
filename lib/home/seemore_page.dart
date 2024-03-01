@@ -9,11 +9,11 @@ class SeeMore extends StatefulWidget {
   final void Function(Magazine) onClick;
 
   @override
-  SeeMoreState createState() => SeeMoreState();
+  State<SeeMore> createState() => _SeeMoreState();
 }
 
 @override
-class SeeMoreState extends State<SeeMore> {
+class _SeeMoreState extends State<SeeMore> {
   List<Magazine> magazines = Magazines().get();
 
   @override

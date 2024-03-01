@@ -7,16 +7,14 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:canardpc/resources/font.dart';
 
-import '../main_pages.dart';
-
 class ProfileOutPage extends StatefulWidget {
   const ProfileOutPage({super.key});
 
   @override
-  ProfileOutPageState createState() => ProfileOutPageState();
+  State<ProfileOutPage> createState() => _ProfileOutPageState();
 }
 
-class ProfileOutPageState extends State<ProfileOutPage> {
+class _ProfileOutPageState extends State<ProfileOutPage> {
   @override
   void dispose() {
     log("ProfileOutPage disposed");

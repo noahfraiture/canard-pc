@@ -10,10 +10,10 @@ class Detail extends StatefulWidget {
   const Detail({super.key, required this.magazine, required this.onBack});
 
   @override
-  DetailState createState() => DetailState();
+  State<Detail> createState() => _DetailState();
 }
 
-class DetailState extends State<Detail> {
+class _DetailState extends State<Detail> {
   late Magazine magazine;
 
   @override

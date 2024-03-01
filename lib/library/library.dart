@@ -5,8 +5,6 @@ import 'package:canardpc/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:canardpc/magazine.dart';
 
-import '../main_pages.dart';
-
 class LibraryPage extends StatefulWidget {
   const LibraryPage({super.key, required this.stream});
 

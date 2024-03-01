@@ -8,11 +8,11 @@ class Owned extends StatefulWidget {
   final void Function(Magazine) onClick;
 
   @override
-  OwnedState createState() => OwnedState();
+  State<Owned> createState() => _OwnedState();
 }
 
 @override
-class OwnedState extends State<Owned> {
+class _OwnedState extends State<Owned> {
   List<Magazine> magazines = Magazines().get();
 
   void _onFilterSelected() {

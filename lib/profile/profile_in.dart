@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:canardpc/resources/font.dart';
 
-import '../main_pages.dart';
-
 class ProfileInPage extends StatefulWidget {
   const ProfileInPage({super.key});
 
   @override
-  ProfileInPageState createState() => ProfileInPageState();
+  State<ProfileInPage> createState() => _ProfileInPageState();
 }
 
-class ProfileInPageState extends State<ProfileInPage> {
+class _ProfileInPageState extends State<ProfileInPage> {
   final User? _user = FirebaseAuth.instance.currentUser; // Store user info
 
   @override
