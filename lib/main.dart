@@ -5,7 +5,6 @@ import 'package:canardpc/profile/profile_in.dart';
 import 'package:canardpc/profile/profile_out.dart';
 import 'package:canardpc/home/home.dart';
 import 'package:canardpc/library/library.dart';
-import 'package:canardpc/widget/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -77,7 +76,18 @@ class _MyHomePageState extends State<MyHomePage> {
       FirebaseAuth.instance.currentUser == null ? const ProfileOutPage() : const ProfileInPage(),
     ];
     return Scaffold(
-      appBar: canardBar(context),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: SizedBox(
+          height: 40,
+          child: Center(
+            child: Image.asset(
+              'assets/images/canard_logo.png', // TODO : add image
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+      ),
       body: IndexedStack(
         index: _currentIndex,
         children: pages,

@@ -1,4 +1,3 @@
-import 'package:canardpc/profile/profile_out.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -37,7 +36,7 @@ class _ProfileInPageState extends State<ProfileInPage> {
                 style: getPrimaryTextStyle(context),
               ),
               const SizedBox(height: 10),
-              Text(_user!.email!),
+              Text(_user.email!),
             ] else ...[
               const Text('No user information available'),
             ],

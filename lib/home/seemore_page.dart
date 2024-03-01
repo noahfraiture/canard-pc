@@ -19,17 +19,16 @@ class _SeeMoreState extends State<SeeMore> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false,
-      onPopInvoked: (v) => widget.onBack(),
-      child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-          child: ListView(children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(Magazine.categoryToName[widget.category] ?? 'error'),
-            ),
-            MagazineGrid(magazines: magazines, onClick: widget.onClick)
-          ])),
-    );
+        canPop: false,
+        onPopInvoked: (v) => widget.onBack(),
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+            child: ListView(children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(Magazine.categoryToName[widget.category] ?? 'error'),
+              ),
+              MagazineGrid(magazines: magazines, onClick: widget.onClick)
+            ])));
   }
 }
