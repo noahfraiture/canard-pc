@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
-  // form with an email and a password field to register
+class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -23,20 +22,22 @@ class _SignInPageState extends State<SignInPage> {
 
   bool isLoading = false;
 
-  // TODO : very similar to register, could be merged or kept separate for clarity
-  Future signIn() async {
+  Future register() async {
     setState(() {
       isLoading = true;
     });
     await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
+        .createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         )
-        .then((value) => setState(() {
-              isLoading = false;
-              Navigator.pop(context);
-            }))
+        .then((value) => {
+              // TODO : does this login the user ?
+              setState(() {
+                isLoading = false;
+                Navigator.pop(context); // Navigate back to previous page
+              })
+            })
         .catchError((e) => {
               setState(() {
                 isLoading = false;
@@ -56,7 +57,7 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               // Title
               const Text(
-                'Welcome Back',
+                'Create Account',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -71,6 +72,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               const SizedBox(height: 5.0),
               TextField(
+                // TODO : add verification of email and password
                 controller: _emailController,
                 cursorColor: Colors.black,
                 textInputAction: TextInputAction.next,
@@ -108,9 +110,9 @@ class _SignInPageState extends State<SignInPage> {
               ),
               const SizedBox(height: 20.0),
 
-              // Sign in button
+              // Register button
               ElevatedButton(
-                onPressed: signIn,
+                onPressed: register,
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -118,7 +120,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                 ),
-                child: isLoading ? const CircularProgressIndicator() : const Text('Sign In'),
+                child: isLoading ? const CircularProgressIndicator() : const Text('Register'),
               ),
             ],
           ),

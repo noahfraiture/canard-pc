@@ -1,4 +1,4 @@
-import 'library/filter.dart';
+import 'library/filter_class.dart';
 
 enum Category {
   canardPC,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../magazine.dart';
+import '../magazine_class.dart';
 import '../resources/font.dart';
 
 class Discover extends StatefulWidget {

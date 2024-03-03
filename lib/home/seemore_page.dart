@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:canardpc/widget/grid_widget.dart';
-import '../magazine.dart';
+import '../magazine_class.dart';
 
 class SeeMore extends StatefulWidget {
   const SeeMore({super.key, required this.category, required this.onBack, required this.onClick});

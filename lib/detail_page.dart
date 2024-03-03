@@ -1,6 +1,6 @@
 import 'package:canardpc/widget/grid_widget.dart';
 import 'package:flutter/material.dart';
-import 'magazine.dart';
+import 'magazine_class.dart';
 
 class Detail extends StatefulWidget {
   final Magazine magazine;

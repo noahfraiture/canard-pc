@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:canardpc/magazine.dart';
-import 'filter.dart';
+import 'package:canardpc/magazine_class.dart';
+import 'filter_class.dart';
 
 class FilterButtons extends StatefulWidget {
   final void Function() notifyParent;

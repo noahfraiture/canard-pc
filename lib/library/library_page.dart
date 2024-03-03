@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:canardpc/library/owned_page.dart';
 import 'package:canardpc/detail_page.dart';
 import 'package:flutter/material.dart';
-import 'package:canardpc/magazine.dart';
+import 'package:canardpc/magazine_class.dart';
 
 class LibraryPage extends StatefulWidget {
   const LibraryPage({super.key, required this.stream});

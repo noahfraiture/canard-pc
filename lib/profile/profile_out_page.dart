@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:canardpc/profile/register.dart';
-import 'package:canardpc/profile/sign_in.dart';
+import 'package:canardpc/profile/register_page.dart';
+import 'package:canardpc/profile/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';

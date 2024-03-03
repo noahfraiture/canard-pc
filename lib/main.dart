@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:canardpc/firebase_options.dart';
 import 'package:canardpc/resources/color_theme.dart';
-import 'package:canardpc/profile/profile_in.dart';
-import 'package:canardpc/profile/profile_out.dart';
-import 'package:canardpc/home/home.dart';
-import 'package:canardpc/library/library.dart';
+import 'package:canardpc/profile/profile_in_page.dart';
+import 'package:canardpc/profile/profile_out_page.dart';
+import 'package:canardpc/home/home_page.dart';
+import 'package:canardpc/library/library_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';

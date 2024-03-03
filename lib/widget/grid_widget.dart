@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../magazine.dart';
+import '../magazine_class.dart';
 
 typedef ClickCallBack<T> = void Function(T);
 

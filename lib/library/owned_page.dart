@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:canardpc/magazine.dart';
+import 'package:canardpc/magazine_class.dart';
 import 'package:canardpc/widget/grid_widget.dart';
 import 'filters_widget.dart';
 

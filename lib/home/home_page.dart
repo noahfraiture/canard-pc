@@ -1,9 +1,9 @@
 import 'dart:developer';
 import 'package:canardpc/home/seemore_page.dart';
 import 'package:flutter/material.dart';
-import '../magazine.dart';
+import '../magazine_class.dart';
 import '../detail_page.dart';
-import 'discover.dart';
+import 'discover_page.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.stream});
