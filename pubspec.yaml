@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^4.17.5
   url_launcher: ^6.2.5
   firebase_core: ^2.25.5
+  syncfusion_flutter_pdfviewer: ^24.2.8
 
 dev_dependencies:
   flutter_test:

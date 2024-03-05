@@ -1,3 +1,4 @@
+import 'package:canardpc/reader/reader_page.dart';
 import 'package:canardpc/widget/grid_widget.dart';
 import 'package:flutter/material.dart';
 import 'magazine_class.dart';
@@ -40,7 +41,7 @@ class _DetailState extends State<Detail> {
                     child: Image.asset(
                       magazine.image,
                       width: 300,
-                      height: 400, // Adjust height as needed
+                      height: 400,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -54,7 +55,15 @@ class _DetailState extends State<Detail> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() => magazine.downloaded = !magazine.downloaded);
-                      // Optional: Implement additional download or read logic
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ReaderPage(imagePaths: [
+                                    'assets/images/special-1.jpg',
+                                    'assets/images/special-2.jpg',
+                                    'assets/images/fevrier.jpg',
+                                    'assets/images/mai.jpg',
+                                  ])));
                     },
                     child: Text(magazine.downloaded ? 'Read' : 'Download'),
                   ),
