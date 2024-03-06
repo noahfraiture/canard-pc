@@ -58,12 +58,8 @@ class _DetailState extends State<Detail> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ReaderPage(imagePaths: [
-                                    'assets/images/special-1.jpg',
-                                    'assets/images/special-2.jpg',
-                                    'assets/images/fevrier.jpg',
-                                    'assets/images/mai.jpg',
-                                  ])));
+                              builder: (context) =>
+                                  const ReaderPage(pdfPath: 'assets/pdf/TP4.pdf')));
                     },
                     child: Text(magazine.downloaded ? 'Read' : 'Download'),
                   ),
