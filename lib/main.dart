@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 40,
           child: Center(
             child: Image.asset(
-              'assets/images/canard_logo.png', // TODO : add image
+              'assets/images/canard_logo.png',
               fit: BoxFit.contain,
             ),
           ),

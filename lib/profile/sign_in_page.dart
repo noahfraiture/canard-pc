@@ -108,7 +108,13 @@ class _SignInPageState extends State<SignInPage> {
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)))),
-                      child: isLoading ? const CircularProgressIndicator() : const Text('Sign In'))
+                      child: isLoading ? const CircularProgressIndicator() : const Text('Sign In')),
+                  ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: ButtonStyle(
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)))),
+                      child: isLoading ? const CircularProgressIndicator() : const Text('Cancel'))
                 ]))));
   }
 }
