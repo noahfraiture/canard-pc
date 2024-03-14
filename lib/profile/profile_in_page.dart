@@ -16,52 +16,55 @@ class _ProfileInPageState extends State<ProfileInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        // Allow content to scroll
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            // User avatar (replace with actual image fetching)
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage:
-                  NetworkImage('https://placeimg.com/640/480/people'), // Placeholder image
-            ),
-            const SizedBox(height: 20),
-
-            // User information (adapt to your user data structure)
-            if (_user != null) ...[
-              Text(
-                _user.displayName ?? 'No name',
-                style: getPrimaryTextStyle(context),
+      body: Center(
+        child: SingleChildScrollView(
+          // Allow content to scroll
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, // Center all elements vertically
+            children: [
+              // User avatar (replace with actual image fetching)
+              const CircleAvatar(
+                radius: 50,
+                backgroundImage:
+                    NetworkImage('https://placeimg.com/640/480/people'), // Placeholder image
               ),
-              const SizedBox(height: 10),
-              Text(_user.email!),
-            ] else ...[
-              const Text('No user information available'),
-            ],
+              const SizedBox(height: 20),
 
-            const SizedBox(height: 20),
+              // User information (adapt to your user data structure)
+              if (_user != null) ...[
+                Text(
+                  _user.displayName ?? 'No name',
+                  style: getPrimaryTextStyle(context),
+                ),
+                const SizedBox(height: 10),
+                Text(_user.email!),
+              ] else ...[
+                const Text('No user information available'),
+              ],
 
-            // Logout button
-            ElevatedButton(
-              onPressed: () async {
-                FirebaseAuth.instance.signOut().then((_) {}).catchError((e) {
-                  Fluttertoast.showToast(msg: e.toString());
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(2),
+              const SizedBox(height: 20),
+
+              // Logout button
+              ElevatedButton(
+                onPressed: () async {
+                  FirebaseAuth.instance.signOut().then((_) {}).catchError((e) {
+                    Fluttertoast.showToast(msg: e.toString());
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                child: Text(
+                  'Logout',
+                  style: mediumButtonTextStyle(context),
                 ),
               ),
-              child: Text(
-                'Logout',
-                style: mediumButtonTextStyle(context),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
