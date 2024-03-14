@@ -59,7 +59,7 @@ class _DetailState extends State<Detail> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const ReaderPage(pdfPath: 'assets/pdf/TP4.pdf')));
+                                  const ReaderPage(pdfPath: 'assets/pdf/LoremIpsum.pdf')));
                     },
                     child: Text(magazine.downloaded ? 'Read' : 'Download'),
                   ),
